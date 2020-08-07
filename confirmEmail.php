@@ -45,7 +45,7 @@ $mail->SMTPAuth = true;   // Enable SMTP authentication
 $mail->Username = 'support@itsmywriter.com';     // SMTP username
 $mail->Password = '2Q^yp3X]i!_H';              // SMTP password
 $mail->SMTPSecure = 'tls';        // Enable TLS encryption, `ssl` also accepted
-$mail->Port = 465;      // TCP port to connect to or 25 for non secure
+$mail->Port = 587;      // TCP port to connect to or 25 for non secure
 $mail->setFrom('support@itsmywriter.com', 'Mailer');
 $mail->addAddress($userEmail);     // Add a recipient
 // $mail->addAddress('ellen@example.com');               // Name is optional
