@@ -34,7 +34,7 @@ if(empty($userEmail) ){
 if($userEmail){
   // echo "llll";
 
-$message="Your secrete word is :"+$usersData[0]['password'];
+$message="Your secrete word is :".$usersData[0]['password'];
 // $mail = new PHPMailer\PHPMailer\PHPMailer(); //$mail->SMTPDebug = 3;      // Enable verbose debug output
 // $mail->isSMTP();     // Set mailer to use SMTP
 // $mail->Host = "mail.itsmywriter.com";  // Specify main and backup SMTP servers
