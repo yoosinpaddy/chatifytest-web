@@ -1,4 +1,3 @@
-
 <?php
 require "paddymailer/src/PHPMailer.php";
 $servername = "localhost";
