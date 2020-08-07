@@ -1,8 +1,12 @@
 <?php
-require "./paddymailer/src/PHPMailer.php";
-require "./paddymailer/src/SMTP.php";
-require "./paddymailer/src/Exception.php";
-require "./paddymailer/src/OAuth.php";
+require 'paddymailer/src/Exception.php';
+require 'paddymailer/src/PHPMailer.php';
+require 'paddymailer/src/SMTP.php';
+require 'sendmail.php';
+// Import PHPMailer classes into the global namespace
+// These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 $servername = "localhost";
 $username = "transdua_cars";
 $password = "WBuChjJrqApt59Z";
@@ -41,12 +45,12 @@ if($userEmail){
 $mail = new PHPMailer\PHPMailer\PHPMailer(); //$mail->SMTPDebug = 3;      // Enable verbose debug output
 $mail->isSMTP();     // Set mailer to use SMTP
 $mail->Host = "mail.itsmywriter.com";  // Specify main and backup SMTP servers
-$mail->SMTPAuth = false;   // Enable SMTP authentication
+$mail->SMTPAuth = true;   // Enable SMTP authentication
 $mail->Username = 'support@itsmywriter.com';     // SMTP username
 $mail->Password = '2Q^yp3X]i!_H';              // SMTP password
 $mail->SMTPSecure = 'tls';        // Enable TLS encryption, `ssl` also accepted
 $mail->Port = 465;      // TCP port to connect to or 25 for non secure
-$mail->setFrom('support@itsmywriter.com', 'Mailer');
+$mail->setFrom('support@itsmywriter.com', 'Its my writer');
 $mail->addAddress($userEmail);     // Add a recipient
 // $mail->addAddress('ellen@example.com');               // Name is optional
 // $mail->addReplyTo('info@example.com', 'Information');
@@ -62,6 +66,7 @@ $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 // $mail->ErrorInfo;} else {    echo 'Message has been sent';}
 // }
 // echo "sada";
+send_users_email(userEmail)
 if($mail->send()){
     $response = ['status_code'=> '200', 'message'=>'Email sent, check email for verification code', 'useremail'=>$usersData[0]['email'],'userpassword'=>$usersData[0]['password'] ];
     // echo $response;
