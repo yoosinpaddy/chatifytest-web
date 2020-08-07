@@ -40,9 +40,9 @@ try {
     $mail->AltBody = $mess;
 
     $mail->send();
-    // echo 'Message has been sent';
+    echo 'Message has been sent';
 } catch (Exception $e) {
-    // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
 }
 class SMTP{

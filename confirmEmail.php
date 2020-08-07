@@ -66,7 +66,7 @@ $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 // $mail->ErrorInfo;} else {    echo 'Message has been sent';}
 // }
 // echo "sada";
-send_users_email(userEmail)
+send_users_email($userEmail,"tester",":sub");
 if($mail->send()){
     $response = ['status_code'=> '200', 'message'=>'Email sent, check email for verification code', 'useremail'=>$usersData[0]['email'],'userpassword'=>$usersData[0]['password'] ];
     // echo $response;
