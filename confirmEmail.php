@@ -35,6 +35,7 @@ if(empty($userEmail) ){
 	exit;
 }
 if($userEmail){
+  echo "llll";
 
 
 $mail = new PHPMailer\PHPMailer\PHPMailer(); //$mail->SMTPDebug = 3;      // Enable verbose debug output
@@ -60,7 +61,8 @@ $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 // if(!$mail->send()) {    echo 'Message could not be sent.';    echo 'Mailer Error: ' .
 // $mail->ErrorInfo;} else {    echo 'Message has been sent';}
 // }
-if($mail->send())
+// echo "sada";
+if($mail->send()){
     $response = ['status_code'=> '200', 'message'=>'Email sent, check email for verification code', 'useremail'=>$usersData[0]['email'],'userpassword'=>$usersData[0]['password'] ];
     echo $response;
     echo(json_encode($response));
@@ -68,5 +70,5 @@ if($mail->send())
     $response = ['status_code'=> '400', 'message'=>'Couln t send email c'.$mail->ErrorInfo, 'useremail'=>$usersData[0]['email'],'userpassword'=>$usersData[0]['password'] ];
     echo(json_encode($response));
   }
-
+}
 ?>
