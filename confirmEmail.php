@@ -105,7 +105,7 @@ if($mail->send())
     $response = ['status_code'=> '200', 'message'=>'Email sent, check email for verification code', 'useremail'=>$usersData[0]['email'],'userpassword'=>$usersData[0]['password'] ];
     echo(json_encode($response));
   }else{       
-    $response = ['status_code'=> '400', 'message'=>'Coulnt send email'.$mail->ErrorInfo, 'useremail'=>$usersData[0]['email'],'userpassword'=>$usersData[0]['password'] ];
+    $response = ['status_code'=> '400', 'message'=>'Coulnt send email c'.$mail->ErrorInfo, 'useremail'=>$usersData[0]['email'],'userpassword'=>$usersData[0]['password'] ];
     echo(json_encode($response));
   }
 
