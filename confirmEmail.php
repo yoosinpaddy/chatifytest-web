@@ -1,5 +1,6 @@
 <?php
-require "paddymailer/src/PHPMailer.php";
+require "./paddymailer/src/PHPMailer.php";
+require "./paddymailer/src/SMTP.php";
 $servername = "localhost";
 $username = "transdua_cars";
 $password = "WBuChjJrqApt59Z";
@@ -77,7 +78,7 @@ if($userEmail){
   //   echo(json_encode($response));
   // }
 
-$mail = new PHPMailer; //$mail->SMTPDebug = 3;      // Enable verbose debug output
+$mail = new PHPMailer\PHPMailer\PHPMailer(); //$mail->SMTPDebug = 3;      // Enable verbose debug output
 $mail->isSMTP();     // Set mailer to use SMTP
 $mail->Host = "mail.itsmywriter.com";  // Specify main and backup SMTP servers
 $mail->SMTPAuth = true;   // Enable SMTP authentication
