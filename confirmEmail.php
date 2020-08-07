@@ -60,4 +60,5 @@ if($userEmail){
 // }
 // echo "sada";
 send_users_email($userEmail,"tester",":sub",$usersData);
+}
 ?>
