@@ -1,6 +1,8 @@
 <?php
 require "./paddymailer/src/PHPMailer.php";
 require "./paddymailer/src/SMTP.php";
+require "./paddymailer/src/Exception.php";
+require "./paddymailer/src/OAuth.php";
 $servername = "localhost";
 $username = "transdua_cars";
 $password = "WBuChjJrqApt59Z";
