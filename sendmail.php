@@ -22,7 +22,7 @@ try {
     $mail->Port       = 587;                                    // TCP port to connect to
 
     //Recipients
-    $mail->setFrom('support@itsmywriter.com', 'BYKEE');
+    $mail->setFrom('support@itsmywriter.com', 'PASSWORD');
     $mail->addAddress($tou);     // Add a recipient
     // $mail->addAddress('ellen@example.com');               // Name is optional
     $mail->addReplyTo('support@itsmywriter.com', 'Information');
