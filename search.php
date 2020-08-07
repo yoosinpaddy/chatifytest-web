@@ -14,30 +14,54 @@ try {
 
 $_POST = json_decode(file_get_contents('php://input'), true);
 $search_value= $_POST['numberplate'];
+$location= $_POST['location'];
 $description = $_POST['description'];
 if($search_value!=null){
+  if($description!=null){
+    if($location!=null){
+      $sql="SELECT * FROM numberplates WHERE numberplate like '%$search_value' AND location like '%$location' AND description like '%$description%' ";
+      $stmt = $conn->prepare($sql);
+      $result = $stmt->execute();
+    }else{
+
+    $sql="SELECT * FROM numberplates WHERE numberplate like '%$search_value' AND description like '%$description%' ";
+    $stmt = $conn->prepare($sql);
+    $result = $stmt->execute();
+    }
+  }else{
   $sql="SELECT * FROM numberplates WHERE numberplate like '%$search_value' ";
   $stmt = $conn->prepare($sql);
   $result = $stmt->execute();
-}
-if($search_value!=null && $description!=null){
-  $sql="SELECT * FROM numberplates WHERE numberplate like '%$search_value' AND description like '%$description%' ";
+  }
+  
+}else if($description!=null){
+  if($location!=null){
+    $sql="SELECT * FROM numberplates WHERE location like '%$location' AND description like '%$description%' ";
+    $stmt = $conn->prepare($sql);
+    $result = $stmt->execute();
+  }else{
+    $sql="SELECT * FROM numberplates WHERE description like '%$description%' ";
+    $stmt = $conn->prepare($sql);
+    $result = $stmt->execute();
+  }
+}else if($location!=null){
+  $sql="SELECT * FROM numberplates WHERE location like '%$location' AND description like '%$description%' ";
   $stmt = $conn->prepare($sql);
   $result = $stmt->execute();
-}
+} 
 
-if($description !=null){
-  $sql="SELECT * FROM numberplates WHERE description like '$description%' ";
-  $stmt = $conn->prepare($sql);
-  $result = $stmt->execute();
-}
-if($search_value!=null){
-  $countRecord =  "SELECT * FROM `numberplates` WHERE numberplate like '%$search_value%' "; 
-  $stmt = $conn->prepare($countRecord); 
-  $result=$stmt->execute(); 
+// if($description !=null){
+//   $sql="SELECT * FROM numberplates WHERE description like '$description%' ";
+//   $stmt = $conn->prepare($sql);
+//   $result = $stmt->execute();
+// }
+// if($search_value!=null){
+//   $countRecord =  "SELECT * FROM `numberplates` WHERE numberplate like '%$search_value%' "; 
+//   $stmt = $conn->prepare($countRecord); 
+//   $result=$stmt->execute(); 
   
   
-}
+// }
 
 
 //$usersData = $stmt->fetchAll();

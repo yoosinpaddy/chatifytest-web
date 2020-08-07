@@ -19,7 +19,7 @@ try {
             numberplates
     ')->fetchColumn();
     
-    $limit = 10;
+    $limit = 5;
 
     // How many pages will there be
     $pages = ceil($total / $limit);
