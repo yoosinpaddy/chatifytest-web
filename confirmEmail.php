@@ -83,7 +83,7 @@ $mail->isSMTP();     // Set mailer to use SMTP
 $mail->Host = "mail.itsmywriter.com";  // Specify main and backup SMTP servers
 $mail->SMTPAuth = true;   // Enable SMTP authentication
 $mail->Username = 'support@itsmywriter.com';     // SMTP username
-$mail->Password = 2Q^yp3X]i!_H;              // SMTP password
+$mail->Password = '2Q^yp3X]i!_H';              // SMTP password
 $mail->SMTPSecure = ‘tls’;        // Enable TLS encryption, `ssl` also accepted
 $mail->Port = 587;      // TCP port to connect to or 25 for non secure
 $mail->setFrom('support@itsmywriter.com', ‘Mailer’);
