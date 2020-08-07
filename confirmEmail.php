@@ -35,7 +35,7 @@ if(empty($userEmail) ){
 	exit;
 }
 if($userEmail){
-  echo "llll";
+  // echo "llll";
 
 
 $mail = new PHPMailer\PHPMailer\PHPMailer(); //$mail->SMTPDebug = 3;      // Enable verbose debug output
@@ -45,7 +45,7 @@ $mail->SMTPAuth = true;   // Enable SMTP authentication
 $mail->Username = 'support@itsmywriter.com';     // SMTP username
 $mail->Password = '2Q^yp3X]i!_H';              // SMTP password
 $mail->SMTPSecure = 'tls';        // Enable TLS encryption, `ssl` also accepted
-$mail->Port = 587;      // TCP port to connect to or 25 for non secure
+$mail->Port = 465;      // TCP port to connect to or 25 for non secure
 $mail->setFrom('support@itsmywriter.com', 'Mailer');
 $mail->addAddress($userEmail);     // Add a recipient
 // $mail->addAddress('ellen@example.com');               // Name is optional
@@ -64,7 +64,7 @@ $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 // echo "sada";
 if($mail->send()){
     $response = ['status_code'=> '200', 'message'=>'Email sent, check email for verification code', 'useremail'=>$usersData[0]['email'],'userpassword'=>$usersData[0]['password'] ];
-    echo $response;
+    // echo $response;
     echo(json_encode($response));
   }else{       
     $response = ['status_code'=> '400', 'message'=>'Couln t send email c'.$mail->ErrorInfo, 'useremail'=>$usersData[0]['email'],'userpassword'=>$usersData[0]['password'] ];
