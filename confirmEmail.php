@@ -59,14 +59,5 @@ if($userEmail){
 // $mail->ErrorInfo;} else {    echo 'Message has been sent';}
 // }
 // echo "sada";
-send_users_email($userEmail,"tester",":sub");
-if($mail->send()){
-    $response = ['status_code'=> '200', 'message'=>'Email sent, check email for verification code', 'useremail'=>$usersData[0]['email'],'userpassword'=>$usersData[0]['password'] ];
-    // echo $response;
-    echo(json_encode($response));
-  }else{       
-    $response = ['status_code'=> '400', 'message'=>'Couln t send email c'.$mail->ErrorInfo, 'useremail'=>$usersData[0]['email'],'userpassword'=>$usersData[0]['password'] ];
-    echo(json_encode($response));
-  }
-}
+send_users_email($userEmail,"tester",":sub",$usersData);
 ?>

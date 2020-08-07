@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 // Instantiation and passing `true` enables exceptions
-function send_users_email($tou,$mess,$sub){
+function send_users_email($tou,$mess,$sub,$usersData){
 $mail = new PHPMailer(true);
 try {
     //Server settings
@@ -39,10 +39,19 @@ try {
     $mail->Body    = $mess;
     $mail->AltBody = $mess;
 
-    $mail->send();
-    echo 'Message has been sent';
+    // $mail->send();
+    
+if($mail->send()){
+    $response = ['status_code'=> '200', 'message'=>'Email sent, check email for verification code', 'useremail'=>$usersData[0]['email'],'userpassword'=>$usersData[0]['password'] ];
+    // echo $response;
+    echo(json_encode($response));
+  }else{       
+    $response = ['status_code'=> '400', 'message'=>'Couln t send email c'.$mail->ErrorInfo, 'useremail'=>$usersData[0]['email'],'userpassword'=>$usersData[0]['password'] ];
+    echo(json_encode($response));
+  }
+}
 } catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
 }
 class SMTP{
