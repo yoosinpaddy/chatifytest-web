@@ -30,9 +30,21 @@ if(empty($userEmail) ){
 	exit;
 }
 if($userEmail){
-  // echo "llll";
+  $message="Your secrete word is :".$usersData[0]['password'];
+  $to      = $userEmail;
+  $subject = 'Password Reset';
+  $headers = 'From: webmaster@example.com' . "\r\n" .
+      'Reply-To: webmaster@example.com' . "\r\n" .
+      'X-Mailer: PHP/' . phpversion();
 
-$message="Your secrete word is :".$usersData[0]['password'];
-send_users_email($userEmail,$message,":sub",$usersData);
+  $sent=mail($to, $subject, $message, $headers);
+  if($sent){
+    $response = ['status_code'=> '200', 'message'=>'Email sent, check email for verification code', 'useremail'=>$usersData[0]['email'],'userpassword'=>$usersData[0]['password'] ];
+    // echo $response;
+    echo(json_encode($response));
+  }else{       
+    $response = ['status_code'=> '400', 'message'=>'Couln t send email c'.$mail->ErrorInfo, 'useremail'=>$usersData[0]['email'],'userpassword'=>$usersData[0]['password'] ];
+    echo(json_encode($response));
+  }
 }
 ?>

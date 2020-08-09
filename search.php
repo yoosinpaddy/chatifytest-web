@@ -19,33 +19,33 @@ $description = $_POST['description'];
 if($search_value!=null){
   if($description!=null){
     if($location!=null){
-      $sql="SELECT * FROM numberplates WHERE numberplate like '%$search_value%' AND location like '%$location%' AND description like '%$description%' ";
+      $sql="SELECT * FROM numberplates WHERE numberplate like '%$search_value%' AND location like '%$location%' AND description like '%$description%' order by create_date DESC";
       $stmt = $conn->prepare($sql);
       $result = $stmt->execute();
     }else{
 
-    $sql="SELECT * FROM numberplates WHERE numberplate like '%$search_value%' AND description like '%$description%' ";
+    $sql="SELECT * FROM numberplates WHERE numberplate like '%$search_value%' AND description like '%$description%'  order by create_date DESC";
     $stmt = $conn->prepare($sql);
     $result = $stmt->execute();
     }
   }else{
-  $sql="SELECT * FROM numberplates WHERE numberplate like '%$search_value%' ";
+  $sql="SELECT * FROM numberplates WHERE numberplate like '%$search_value%'  order by create_date DESC";
   $stmt = $conn->prepare($sql);
   $result = $stmt->execute();
   }
   
 }else if($description!=null){
   if($location!=null){
-    $sql="SELECT * FROM numberplates WHERE location like '%$location%' AND description like '%$description%' ";
+    $sql="SELECT * FROM numberplates WHERE location like '%$location%' AND description like '%$description%'  order by create_date DESC";
     $stmt = $conn->prepare($sql);
     $result = $stmt->execute();
   }else{
-    $sql="SELECT * FROM numberplates WHERE description like '%$description%' ";
+    $sql="SELECT * FROM numberplates WHERE description like '%$description%'  order by create_date DESC";
     $stmt = $conn->prepare($sql);
     $result = $stmt->execute();
   }
 }else if($location!=null){
-  $sql="SELECT * FROM numberplates WHERE location like '%$location%' AND description like '%$description%' ";
+  $sql="SELECT * FROM numberplates WHERE location like '%$location%' AND description like '%$description%'  order by create_date DESC";
   $stmt = $conn->prepare($sql);
   $result = $stmt->execute();
 } 

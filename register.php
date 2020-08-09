@@ -14,7 +14,8 @@ try {
 }
  $_POST = json_decode(file_get_contents('php://input'), true);
 $email = $_POST['email'];
-$getUserData = "SELECT * FROM users WHERE email = '{$email}'";
+$cell2 = $_POST['cellno'];
+$getUserData = "SELECT * FROM users WHERE or  cellno = '{$cell2}'";
 
 $stmt = $conn->prepare($getUserData);
 

@@ -2,13 +2,13 @@
 require 'paddymailer/src/Exception.php';
 require 'paddymailer/src/PHPMailer.php';
 require 'paddymailer/src/SMTP.php';
-// Import PHPMailer classes into the global namespace
+// Import PHPMailer classes into the global namespace 2Q^yp3X]i!_H
 // These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 // Instantiation and passing `true` enables exceptions
-function send_users_email($tou,$mess,$sub,$usersData){
+function send_users_email($toMail,$message,$subject,$usersData){
 $mail = new PHPMailer(true);
 try {
     //Server settings
@@ -17,13 +17,13 @@ try {
     $mail->Host       = 'mail.itsmywriter.com';                    // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
     $mail->Username   = 'support@itsmywriter.com';                     // SMTP username
-    $mail->Password   = '2Q^yp3X]i!_H';                               // SMTP password
+    $mail->Password   = 'xxxxxxxx';                               // SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
     $mail->Port       = 587;                                    // TCP port to connect to
 
     //Recipients
     $mail->setFrom('support@itsmywriter.com', 'PASSWORD');
-    $mail->addAddress($tou);     // Add a recipient
+    $mail->addAddress($toMail);     // Add a recipient
     // $mail->addAddress('ellen@example.com');               // Name is optional
     $mail->addReplyTo('support@itsmywriter.com', 'Information');
     // $mail->addCC('cc@example.com');
@@ -35,9 +35,9 @@ try {
 
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = $sub;
-    $mail->Body    = $mess;
-    $mail->AltBody = $mess;
+    $mail->Subject = $subject;
+    $mail->Body    = $message;
+    $mail->AltBody = $message;
 
     // $mail->send();
     
@@ -899,7 +899,8 @@ class SMTP{
         if (empty($dsn)) {
             $rcpt = 'RCPT TO:<' . $address . '>';
         } else {
-            $dsn = strtoupper($dsn);
+            $dsn = strtoMail
+        pper($dsn);
             $notify = [];
 
             if (strpos($dsn, 'NEVER') !== false) {
@@ -1242,15 +1243,15 @@ class SMTP{
     /**
      * Set error messages and codes.
      *
-     * @param string $message      The error message
+     * @param string $messageage      The error message
      * @param string $detail       Further detail on the error
      * @param string $smtp_code    An associated SMTP error code
      * @param string $smtp_code_ex Extended SMTP code
      */
-    protected function setError($message, $detail = '', $smtp_code = '', $smtp_code_ex = '')
+    protected function setError($messageage, $detail = '', $smtp_code = '', $smtp_code_ex = '')
     {
         $this->error = [
-            'error' => $message,
+            'error' => $messageage,
             'detail' => $detail,
             'smtp_code' => $smtp_code,
             'smtp_code_ex' => $smtp_code_ex,
