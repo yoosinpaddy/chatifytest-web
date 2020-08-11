@@ -36,9 +36,5 @@ try {
   $result = $stmt->execute($arrya);
   $response = ['status_code'=> '200', 'message'=>'Data Inserted Successfully!', 'data'=> $result];
   echo(json_encode($response));
-  
-
-
-
 
 ?>
