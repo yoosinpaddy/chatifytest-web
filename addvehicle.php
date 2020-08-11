@@ -27,9 +27,10 @@ try {
     $imglink= basename($_FILES['image']['name']);
     
   }
- $sql = "INSERT INTO numberplates (numberplate, location,description,image,useremail)
+  $mylog="user ".$useremail." has submited car plate no ".$numberplate." in location ".$location." with the desctiption: ".$description;
+ $sql = "INSERT INTO numberplates (numberplate, location,description,image,useremail,logs)
     VALUES (:numberplate, :location,:description,:image,:useremail)";
-    $arrya  = array('numberplate' => $numberplate,'location'=>$location,'description'=>$description,'image'=>$imglink ,'useremail'=>$useremail );
+    $arrya  = array('numberplate' => $numberplate,'location'=>$location,'description'=>$description,'image'=>$imglink ,'useremail'=>$useremail,'logs'=>$mylog );
 
   // use exec() because no results are returned
   $stmt = $conn->prepare($sql);
