@@ -18,6 +18,7 @@ try {
   $numberplate = $_REQUEST['numberplate'];
   $location = $_REQUEST['location'];
   $description = $_REQUEST['description'];
+  $useremail = $_REQUEST['useremail'];
   $target_dir="uploads/";
   $target_file = $target_dir . basename($_FILES['image']['name']);
 
@@ -26,9 +27,9 @@ try {
     $imglink= basename($_FILES['image']['name']);
     
   }
- $sql = "INSERT INTO numberplates (numberplate, location,description,image)
-    VALUES (:numberplate, :location,:description,:image)";
-    $arrya  = array('numberplate' => $numberplate,'location'=>$location,'description'=>$description,'image'=>$imglink );
+ $sql = "INSERT INTO numberplates (numberplate, location,description,image,useremail)
+    VALUES (:numberplate, :location,:description,:image,:useremail)";
+    $arrya  = array('numberplate' => $numberplate,'location'=>$location,'description'=>$description,'image'=>$imglink ,'useremail'=>$useremail );
 
   // use exec() because no results are returned
   $stmt = $conn->prepare($sql);
