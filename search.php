@@ -19,7 +19,7 @@ $description = $_POST['location_description'];//description and location
 // $description = $_POST['description'];
 if($search_value!=null){
   if($description!=null){
-      $sql="SELECT * FROM numberplates WHERE numberplate like '%$search_value%' AND location like '%$description%' AND description like '%$description%' order by create_date DESC";
+      $sql="SELECT * FROM numberplates WHERE numberplate like '%$search_value%' OR location like '%$description%' OR description like '%$description%' order by create_date DESC";
       $stmt = $conn->prepare($sql);
       $result = $stmt->execute();
   }else{
