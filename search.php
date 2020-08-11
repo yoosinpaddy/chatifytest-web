@@ -29,11 +29,11 @@ if($search_value!=null){
   }
   
 }else if($description!=null){
-    $sql="SELECT * FROM numberplates WHERE location like '%$description%' AND description like '%$description%'  order by create_date DESC";
+    $sql="SELECT * FROM numberplates WHERE location like '%$description%' OR description like '%$description%'  order by create_date DESC";
     $stmt = $conn->prepare($sql);
     $result = $stmt->execute();
 }else if($location!=null){
-  $sql="SELECT * FROM numberplates WHERE location like '%$location%' AND description like '%$description%'  order by create_date DESC";
+  $sql="SELECT * FROM numberplates WHERE location like '%$location%' OR description like '%$description%'  order by create_date DESC";
   $stmt = $conn->prepare($sql);
   $result = $stmt->execute();
 } 
