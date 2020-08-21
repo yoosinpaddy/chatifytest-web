@@ -46,6 +46,11 @@ if (!empty($comment)) {
             echo (json_encode($response));
             exit;
         }
+    }else{
+        $response = ['status_code' => '400', 'message' => 'Data Comments Found', 'data' => []];
+        echo (json_encode($response));
+        exit;
+
     }
 }
 
