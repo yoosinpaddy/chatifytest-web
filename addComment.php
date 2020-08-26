@@ -21,14 +21,14 @@ $getUserData = "INSERT INTO `comments` (`id`, `car_id`, `comment`, `user_email`,
 // echo "yes2";
 
 if (!empty($comment)) {
-echo "yes3";
+// echo "yes3";
     $stmt = $conn->prepare($getUserData);
     $result = $stmt->execute();
     $response = ['status_code' => '200', 'message' => 'Comment added!', 'data' => []];
     echo (json_encode($response));
     exit;
 } else  {
-echo "yes4";
+// echo "yes4";
     $sql = "SELECT * FROM `comments` where car_id ='$carNo' order by id DESC";
 
 
@@ -37,24 +37,24 @@ echo "yes4";
     $result = $stmt->execute();
 
     if (!empty($result)) {
-echo "yes5";
+// echo "yes5";
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $records[] = $row;
         }
 
 
         if ($records != null) {
-echo "yes6";
+// echo "yes6";
             $response = ['status_code' => '200', 'message' => 'Comment Result', 'data' => $records];
             echo (json_encode($response));
         } else {
-echo "yes7";
+// echo "yes7";
             $response = ['status_code' => '400', 'message' => 'Data Comments Found', 'data' => []];
             echo (json_encode($response));
             exit;
         }
     }else{
-echo "yes8";
+// echo "yes8";
         $response = ['status_code' => '400', 'message' => 'Data Comments Found', 'data' => []];
         echo (json_encode($response));
         exit;
